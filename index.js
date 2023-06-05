@@ -1,0 +1,5 @@
+const obj = {
+  name: 'xiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobaixiaobai',
+  age: 23,
+  baby: 'honmebabay',
+}
