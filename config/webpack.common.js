@@ -1,14 +1,23 @@
-const { resolve } = require('path')
-const { PROJECT_PATH, isDev } = require('../constant')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { resolve } = require('path');
+const { PROJECT_PATH, isDev } = require('./constants');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: resolve(PROJECT_PATH, './src/app.js'),
+    app: resolve(PROJECT_PATH, './src/index.tsx'),
   },
   output: {
     filename: `js/[name]${isDev ? '' : '.[hash:8]'} .js`,
     path: resolve(PROJECT_PATH, './dist'),
+  },
+  resolve: {
+    alias: {
+      '@/components': resolve(__dirname, '../src/components'),
+      '@/store': resolve(__dirname, '../src/store'),
+      '@/styles': resolve(__dirname, '../src/styles'),
+      '@/views': resolve(__dirname, '../src/views'),
+    },
+    extensions: ['.tsx', '.ts', '.js', '.json'],
   },
   module: {
     rules: [
@@ -36,6 +45,37 @@ module.exports = {
           },
         ],
       },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10 * 1024,
+              name: '[name].[contenthash:8].[ext]',
+              outputPath: 'assets/images',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(ttf|woff|woff2|eot|otf)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: '[name].[contenthash:8].[ext]',
+              outputPath: 'assets/fonts',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(tsx?|js)$/,
+        loader: 'babel-loader',
+        options: { cacheDirectory: true },
+        exclude: /node_modules/,
+      },
     ],
   },
   plugins: [
@@ -61,4 +101,4 @@ module.exports = {
           },
     }),
   ],
-}
+};
