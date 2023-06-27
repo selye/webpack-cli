@@ -12,10 +12,8 @@ module.exports = {
   },
   resolve: {
     alias: {
+      '@/src': resolve(__dirname, '../src'),
       '@/components': resolve(__dirname, '../src/components'),
-      '@/store': resolve(__dirname, '../src/store'),
-      '@/styles': resolve(__dirname, '../src/styles'),
-      '@/views': resolve(__dirname, '../src/views'),
     },
     extensions: ['.tsx', '.ts', '.js', '.json'],
   },
@@ -59,22 +57,20 @@ module.exports = {
         ],
       },
       {
-        test: /\.(ttf|woff|woff2|eot|otf)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '[name].[contenthash:8].[ext]',
-              outputPath: 'assets/fonts',
-            },
-          },
-        ],
-      },
-      {
         test: /\.(tsx?|js)$/,
         loader: 'babel-loader',
         options: { cacheDirectory: true },
         exclude: /node_modules/,
+      },
+      {
+        test: /\.(mp4|webm|ogg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'videos/[name].[hash].[ext]', // 指定输出路径和文件名
+            outputPath: 'assets/video',
+          },
+        },
       },
     ],
   },
