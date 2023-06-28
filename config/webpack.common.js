@@ -1,6 +1,9 @@
 const { resolve } = require('path');
 const { PROJECT_PATH, isDev } = require('./constants');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const WebpackBar = require('webpackbar');
+const { copyFile } = require('fs');
 
 module.exports = {
   entry: {
@@ -67,7 +70,7 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
-            name: 'videos/[name].[hash].[ext]', // 指定输出路径和文件名
+            name: '[name].[hash].[ext]', // 指定输出路径和文件名
             outputPath: 'assets/video',
           },
         },
@@ -96,5 +99,33 @@ module.exports = {
             useShortDoctype: true,
           },
     }),
+    new CopyPlugin({
+      patterns: [
+        {
+          context: resolve(PROJECT_PATH, './public'),
+          from: '*',
+          to: resolve(PROJECT_PATH, './dist'),
+          toType: 'dir',
+          globOptions: {
+            dot: false, // 允许匹配以 . 开头的文件, 比如 .gitignore
+            gitignore: false,
+            ignore: ['.DS_Store', '**/index.html'],
+          },
+        },
+      ],
+    }),
+    new WebpackBar({
+      name: isDev ? '正在启动' : '正在打包',
+      color: '#fa8c16',
+    }),
   ],
+
+  /*
+
+  防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖(external dependencies)
+  */
+  // externals: {
+  //   react: 'React',
+  //   'react-dom': 'ReactDOM',
+  // },
 };
