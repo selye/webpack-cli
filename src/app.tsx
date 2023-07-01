@@ -2,6 +2,7 @@ import { FC, useEffect } from 'react';
 import { Header } from '@/components/Header';
 import myVideo from '@/src/assets/video/video.mp4';
 import myImg from '@/src/assets/images/p102.jpg';
+import { VirtualList } from './components/VirtualList';
 
 interface IPprops {
   name: string;
@@ -21,20 +22,11 @@ const App: FC<IPprops> = (props) => {
 
   return (
     <div className="app">
-      <Header />
+      {/* <Header /> */}
       {/* <img src={myImg} /> */}
-      <p>{`Hello! I'm ${name}, ${age} years old.`}</p>
+      {/* <p>{`Hello! I'm ${name}, ${age} years old.`}</p> */}
       {/* <video src={myVideo} controls /> */}
-      <div className="mouse-box" onClick={handleClick}>
-        323232323232
-      </div>
-      <div
-        onClick={() => {
-          document.removeEventListener('mousemove', MouseMove);
-        }}
-      >
-        44444444444
-      </div>
+      <VirtualList />
     </div>
   );
 };
