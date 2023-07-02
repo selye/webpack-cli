@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './index.less';
 
-/* 总数组 */
-const listData = Array.from({ length: 10000 }, (_, index) => index);
-/* 子项高度 */
-const itemSize = 100;
-/* 列表总高度 */
-const listheight = listData.length * itemSize;
+interface VitralProp {
+  listData?: number[];
+  itemSize?: number;
+}
 
-export const VirtualList = () => {
+export const VirtualList: React.FC<VitralProp> = (props) => {
+  const { listData = [], itemSize = 100 } = props;
+  const listheight = listData?.length * itemSize;
   /* 可视区域 */
   const containerRef = useRef<HTMLDivElement>(null);
   /* 列表数据 */
@@ -28,7 +28,7 @@ export const VirtualList = () => {
   }, []);
 
   useEffect(() => {
-    setVisibleData(listData.slice(startIndex, startIndex + visibleCount.current));
+    setVisibleData(listData?.slice(startIndex, startIndex + visibleCount.current));
   }, [startIndex]);
 
   useEffect(() => {

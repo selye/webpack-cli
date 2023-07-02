@@ -12,6 +12,8 @@ interface IPprops {
 const App: FC<IPprops> = (props) => {
   const { name, age } = props;
 
+  const listData = Array.from({ length: 10000 }, (_, index) => index);
+
   const MouseMove = () => {
     console.log('move');
   };
@@ -26,7 +28,7 @@ const App: FC<IPprops> = (props) => {
       {/* <img src={myImg} /> */}
       {/* <p>{`Hello! I'm ${name}, ${age} years old.`}</p> */}
       {/* <video src={myVideo} controls /> */}
-      <VirtualList />
+      <VirtualList listData={listData} itemSize={50} />
     </div>
   );
 };
