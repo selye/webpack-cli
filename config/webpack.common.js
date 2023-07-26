@@ -77,6 +77,11 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: resolve(PROJECT_PATH, './public/index.html'),
