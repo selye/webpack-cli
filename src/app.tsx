@@ -6,6 +6,12 @@ import { VirtualList } from './components/VirtualList';
 const CmpOne = React.lazy(() => import('./components/Componetsone'));
 const CmpTwo = React.lazy(() => import('./components/Componetstwo'));
 import axios from 'axios';
+import { Counter } from './components/Counter';
+import { store } from '@/src/store';
+import { Provider } from 'react-redux';
+import { TestButton } from './components/TestCmp';
+import ProductPage from './views/product';
+import MyComponents from './views/postmessage';
 
 interface IPprops {
   name: string;
@@ -39,27 +45,38 @@ const App: FC<IPprops> = (props) => {
   };
 
   return (
-    <div className="app">
-      {/* <Header /> */}
-      {/* <img src={myImg} /> */}
-      {/* <p>{`Hello! I'm ${name}, ${age} years old.`}</p> */}
-      {/* <video src={myVideo} controls /> */}
-      {/* <VirtualList listData={listData} itemSize={50} /> */}
-      <Suspense fallback={<Loading />}>
-        <CmpOne a={1} b={2} />
-        {showTwo ? <CmpTwo a={2} b={3} /> : null}
-        <button
-          type="button"
-          onClick={() => {
-            setShowTwo(!showTwo);
-          }}
-        >
-          showTwo
-        </button>
-        <button onClick={getData}>获取数据</button>
-        {imgSrc ? <img src={imgSrc ?? ''} /> : <div>loading...</div>}
-      </Suspense>
-    </div>
+    <Provider store={store}>
+      <div className="app">
+        {/* <Header /> */}
+        {/* <img src={myImg} /> */}
+        {/* <p>{`Hello! I'm ${name}, ${age} years old.`}</p> */}
+        {/* <video src={myVideo} controls /> */}
+        {/* <VirtualList listData={listData} itemSize={50} /> */}
+        <Suspense fallback={<Loading />}>
+          {/* <CmpOne a={1} b={2} /> */}
+          {/* {showTwo ? <CmpTwo a={2} b={3} /> : null}
+          <button
+            type="button"
+            onClick={() => {
+              setShowTwo(!showTwo);
+            }}
+          >
+            showTwo
+          </button>
+          <button onClick={getData}>获取数据</button>
+          {imgSrc ? <img src={imgSrc ?? ''} /> : <div>loading...</div>}
+          <div>
+            <p>数字</p>
+            <Counter />
+          </div> */}
+          {/* <TestButton /> */}
+          <h4>effect变更</h4>
+          <ProductPage />
+          <h4>状态管理</h4>
+          <MyComponents />
+        </Suspense>
+      </div>
+    </Provider>
   );
 };
 

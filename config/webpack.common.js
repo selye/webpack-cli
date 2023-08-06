@@ -109,7 +109,7 @@ module.exports = {
         {
           context: resolve(PROJECT_PATH, './public'),
           from: '*',
-          to: resolve(PROJECT_PATH, './dist'),
+
           toType: 'dir',
           globOptions: {
             dot: false, // 允许匹配以 . 开头的文件, 比如 .gitignore
