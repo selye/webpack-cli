@@ -1,0 +1,14 @@
+/*
+  variable css
+*/
+
+:root.light{
+  --color: #333;
+  --background-color: #FFF;
+}
+
+:root.dark{
+  --color: #FFF;
+  --background-color: #333;
+}
+

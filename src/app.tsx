@@ -12,6 +12,14 @@ import { Provider } from 'react-redux';
 import { TestButton } from './components/TestCmp';
 import ProductPage from './views/product';
 import MyComponents from './views/postmessage';
+import EffectRooms from './views/effectRooms';
+import { ConfigProvider, theme } from 'antd';
+import ChatRoom from './views/chatRoom';
+import MouseFollow from './views/mouseFollow';
+import Animationeffect from './views/animation';
+import MgDialog from './views/modalDialog';
+import SectionList from './views/longsection';
+import MyForm from './views/sonTofather';
 
 interface IPprops {
   name: string;
@@ -26,6 +34,7 @@ const App: FC<IPprops> = (props) => {
   const { name, age } = props;
   const [showTwo, setShowTwo] = useState<boolean>(false);
   const [imgSrc, setImgSrc] = useState<string>('');
+  const [primary, setPrimary] = useState<string>('#1677ff');
   // const listData = Array.from({ length: 10000 }, (_, index) => index);
 
   // const MouseMove = () => {
@@ -37,7 +46,6 @@ const App: FC<IPprops> = (props) => {
   // };
 
   const getData = () => {
-    console.log('获取数据');
     axios.get('https://api.thecatapi.com/v1/images/search', {}).then((res) => {
       console.log(res);
       setImgSrc(res.data[0].url);
@@ -45,16 +53,42 @@ const App: FC<IPprops> = (props) => {
   };
 
   return (
-    <Provider store={store}>
-      <div className="app">
-        {/* <Header /> */}
-        {/* <img src={myImg} /> */}
-        {/* <p>{`Hello! I'm ${name}, ${age} years old.`}</p> */}
-        {/* <video src={myVideo} controls /> */}
-        {/* <VirtualList listData={listData} itemSize={50} /> */}
-        <Suspense fallback={<Loading />}>
-          {/* <CmpOne a={1} b={2} /> */}
-          {/* {showTwo ? <CmpTwo a={2} b={3} /> : null}
+    <ConfigProvider
+      theme={{
+        // algorithm: theme.darkAlgorithm,
+        // 2. 组合使用暗色算法与紧凑算法
+        // algorithm: [theme.darkAlgorithm, theme.compactAlgorithm],
+        token: {
+          // Seed Token，影响范围大
+          colorPrimary: primary,
+          borderRadius: 2,
+          // 派生变量，影响范围小
+          // colorBgContainer: '#f6ffed',
+          // 1. 单独使用暗色算法
+        },
+
+        // components: {
+        //   Button: {
+        //     colorPrimary: '#00b96b',
+        //     algorithm: true,
+        //   },
+        //   Input: {
+        //     colorPrimary: '#eb2f96',
+        //     algorithm: true, // 启用算法
+        //   },
+        // },
+      }}
+    >
+      <Provider store={store}>
+        <div className="app">
+          {/* <Header /> */}
+          {/* <img src={myImg} /> */}
+          {/* <p>{`Hello! I'm ${name}, ${age} years old.`}</p> */}
+          {/* <video src={myVideo} controls /> */}
+          {/* <VirtualList listData={listData} itemSize={50} /> */}
+          <Suspense fallback={<Loading />}>
+            {/* <CmpOne a={1} b={2} /> */}
+            {/* {showTwo ? <CmpTwo a={2} b={3} /> : null}
           <button
             type="button"
             onClick={() => {
@@ -69,14 +103,23 @@ const App: FC<IPprops> = (props) => {
             <p>数字</p>
             <Counter />
           </div> */}
-          {/* <TestButton /> */}
-          <h4>effect变更</h4>
+            {/* <TestButton /> */}
+            {/* <h4>effect变更</h4>
           <ProductPage />
           <h4>状态管理</h4>
           <MyComponents />
-        </Suspense>
-      </div>
-    </Provider>
+          <EffectRooms /> */}
+            <ChatRoom />
+            <MouseFollow />
+            <Animationeffect />
+            <MgDialog />
+            {/* <SectionList /> */}
+            <hr />
+            <MyForm />
+          </Suspense>
+        </div>
+      </Provider>
+    </ConfigProvider>
   );
 };
 
