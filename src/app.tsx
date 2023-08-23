@@ -20,6 +20,7 @@ import Animationeffect from './views/animation';
 import MgDialog from './views/modalDialog';
 import SectionList from './views/longsection';
 import MyForm from './views/sonTofather';
+import MgReducer from './views/reducer';
 
 interface IPprops {
   name: string;
@@ -116,6 +117,7 @@ const App: FC<IPprops> = (props) => {
             {/* <SectionList /> */}
             <hr />
             <MyForm />
+            <MgReducer />
           </Suspense>
         </div>
       </Provider>
