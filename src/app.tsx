@@ -21,6 +21,8 @@ import MgDialog from './views/modalDialog';
 import SectionList from './views/longsection';
 import MyForm from './views/sonTofather';
 import MgReducer from './views/reducer';
+import { Vdom } from './components/Vdom';
+import { LazyLoad } from './components/Lazyload';
 
 interface IPprops {
   name: string;
@@ -118,6 +120,10 @@ const App: FC<IPprops> = (props) => {
             <hr />
             <MyForm />
             <MgReducer />
+            <hr />
+            <Vdom />
+            <hr />
+            <LazyLoad />
           </Suspense>
         </div>
       </Provider>

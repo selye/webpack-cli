@@ -62,8 +62,8 @@ module.exports = {
       {
         test: /\.(tsx?|js)$/,
         loader: 'babel-loader',
-        options: { cacheDirectory: true },
         exclude: /node_modules/,
+        options: { cacheDirectory: true },
       },
       {
         test: /\.(mp4|webm|ogg)$/,
