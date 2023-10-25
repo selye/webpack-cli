@@ -23,6 +23,9 @@ import MyForm from './views/sonTofather';
 import MgReducer from './views/reducer';
 import { Vdom } from './components/Vdom';
 import { LazyLoad } from './components/Lazyload';
+import { GridComponent } from './components/GridComponent';
+import Picture from './views/reactRe';
+import useCount from './utils/count';
 
 interface IPprops {
   name: string;
@@ -38,6 +41,8 @@ const App: FC<IPprops> = (props) => {
   const [showTwo, setShowTwo] = useState<boolean>(false);
   const [imgSrc, setImgSrc] = useState<string>('');
   const [primary, setPrimary] = useState<string>('#1677ff');
+
+  const { count } = useCount();
   // const listData = Array.from({ length: 10000 }, (_, index) => index);
 
   // const MouseMove = () => {
@@ -50,7 +55,6 @@ const App: FC<IPprops> = (props) => {
 
   const getData = () => {
     axios.get('https://api.thecatapi.com/v1/images/search', {}).then((res) => {
-      console.log(res);
       setImgSrc(res.data[0].url);
     });
   };
@@ -84,6 +88,7 @@ const App: FC<IPprops> = (props) => {
     >
       <Provider store={store}>
         <div className="app">
+          <div>现在的数字是：{count}</div>
           {/* <Header /> */}
           {/* <img src={myImg} /> */}
           {/* <p>{`Hello! I'm ${name}, ${age} years old.`}</p> */}
@@ -123,7 +128,10 @@ const App: FC<IPprops> = (props) => {
             <hr />
             <Vdom />
             <hr />
-            <LazyLoad />
+            {/* <LazyLoad /> */}
+            <hr />
+            {/* <GridComponent /> */}
+            <Picture />
           </Suspense>
         </div>
       </Provider>

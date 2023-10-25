@@ -1,0 +1,17 @@
+
+.grid-container{
+  display: grid;
+  // grid: repeat(2,60px) / auto-flow 80px;
+  grid-template-columns: repeat(2, 33.33%);
+  grid-template-rows: repeat(2, 33.33%);
+
+  div{
+    display: inline-grid;
+    background: #8ca0ff;
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+    box-sizing: border-box;
+    text-align: center;
+  }
+}

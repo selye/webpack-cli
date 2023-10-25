@@ -23,7 +23,6 @@ const MgReducer = () => {
 
   function foo() {
     try {
-      console.log('trytrytry');
       return '1111';
     } catch (error) {
       console.log(error);
@@ -33,7 +32,6 @@ const MgReducer = () => {
   }
 
   const res = foo();
-  console.log('res', res);
 
   return (
     <>

@@ -82,7 +82,7 @@ const Animationeffect = () => {
         context?.clip();
         context?.drawImage(img, x, y, width, height);
         context?.restore();
-        console.log('绘制完毕');
+        // console.log('绘制完毕');
       };
     }
   }
