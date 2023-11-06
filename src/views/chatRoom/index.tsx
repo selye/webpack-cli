@@ -33,6 +33,12 @@ const Room: FC<ChatProp> = (props) => {
 const ChatRoom: FC<ChatProp> = (prop) => {
   const [roomId, setRoomId] = useState('mickey');
   const [show, setShow] = useState(false);
+
+
+
+
+
+
   return (
     <>
       <label>

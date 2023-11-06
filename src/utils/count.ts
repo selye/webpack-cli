@@ -24,7 +24,7 @@ function useCount() {
   useEffect(() => {
     init();
     return () => clearInterval(timerId.current);
-  }, []);
+  }, [count]);
 
   return { count };
 }
