@@ -73,34 +73,7 @@ export default function Picture() {
   //   start(i);
   // }
 
-  // var index = 0;
 
-  // function test(i) {
-  //   // console.log(i);
-  //   return i;
-  // }
-
-  // const sleep = (duration: number, callback: () => void) => {
-  //   setTimeout(() => {
-  //     callback();
-  //   }, duration);
-  // };
-
-  // function execute(i: number, callback: () => void) {
-  //   const duration = Math.floor(Math.random() * 5000);
-  //   sleep(duration, () => {
-  //     console.log('id' + i);
-  //     callback();
-  //   });
-  // }
-
-  // function start(index: number) {
-  //   if (index < 5) {
-  //     execute(index, () => {
-  //       start(index + 1);
-  //     });
-  //   }
-  // }
 
   // start(0);
 

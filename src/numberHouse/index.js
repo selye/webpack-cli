@@ -8,8 +8,6 @@
  *  a.filter(item => b.indexOf(item) === -1)
  * */
 
-import { useEffect } from 'react';
-
 /**
  * 1. 判断b数组元素是否全部包含在b数组中，
  * 2. 返回b数组中所有不属于a数组的元素
@@ -86,3 +84,172 @@ const btn = document.querySelector('#btn');
 
 // btn.addEventListener('click', debunce(shopping));
 btn.addEventListener('click', throttle(shopping));
+
+// 函数柯里化
+function curry(fn) {
+  return function curried(...args) {
+    if (args.length >= fn.length) {
+      return fn.apply(this, args);
+    }
+    return function (...args2) {
+      return curried.apply(this, args.concat(args2));
+    };
+  };
+}
+
+const sum = (a, b) => a + b;
+
+const sumFn = curry(sum);
+
+// console.log(sumFn(1, 1));
+
+// 递归
+
+const number = 10;
+function getSum(number) {
+  if (number === 1) {
+    return 1;
+  }
+  return number + getSum(number - 1);
+}
+// console.log(getSum(number));
+
+const treeData = [
+  {
+    id: 1,
+    name: 'root',
+    children: [
+      {
+        id: 2,
+        name: 'child1',
+        children: [
+          {
+            id: 3,
+            name: 'grandchild1',
+            children: [
+              {
+                id: 4,
+                name: 'greatgrandchild1',
+                children: [],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const atob = (aq) => {
+  return aq.reduce((flatArray, cur) => {
+    flatArray.push(cur);
+    if (cur.children.length > 0) {
+      flatArray = flatArray.concat(atob(cur.children));
+    }
+    return flatArray;
+  }, []);
+};
+
+const result1 = atob(treeData);
+console.log(result1);
+
+// 函数柯里化
+// function add1(...args) {
+//   return args.reduce((sum, cur) => sum + cur, 0);
+// }
+
+// function curring(fn) {
+//   return function curried(...args) {
+//     console.log(fn.length);
+//     if (args.length >= fn.length) {
+//       return fn.apply(this, args);
+//     } else {
+//       return function (...args2) {
+//         return curried.call(this, ...args, ...args2);
+//       };
+//     }
+//   };
+// }
+
+function add1(x, y, z) {
+  return x + y + z;
+}
+
+function curring(fn) {
+  return function curried(...args) {
+    console.log(args.length);
+    if (args.length >= fn.length) {
+      return fn.apply(this, args);
+    } else {
+      return function (...args2) {
+        return curried.call(this, ...args, ...args2);
+      };
+    }
+  };
+}
+
+const curriedAdd = curring(add1);
+const result111 = curriedAdd(1)(2)(3);
+
+// const sumResult = curring(add1);
+// console.log(sumResult(1)(2)(3)(4));
+
+// 递归
+function getSum(n) {
+  if (n === 0) return 0;
+  return n * getSum(n - 1);
+}
+// 函数柯里化
+
+const flatArray = [1, 2, 3, 4, 5, [1, 2, [3, [5], 6, [8, [9]]]]];
+
+const flatFn = (list) => {
+  let result = [];
+  list.forEach((item) => {
+    if (Array.isArray(item)) {
+      result = result.concat(flatFn(item));
+    } else {
+      result.push(item);
+    }
+  });
+  return result;
+};
+
+let arrObject = [
+  {
+    id: 1,
+    name: 'JJ1',
+  },
+  {
+    id: 2,
+    name: 'JJ2',
+  },
+  {
+    id: 1,
+    name: 'JJ1',
+  },
+  {
+    id: 4,
+    name: 'JJ4',
+  },
+  {
+    id: 2,
+    name: 'JJ2',
+  },
+];
+
+// 对象数组根据属性去重
+let uniqueObject = (arr, key) => {
+  let result = [];
+  let hash = {};
+  arr.forEach((item) => {
+    hash[item[key]] = item;
+  });
+  for (let key in hash) {
+    result.push(hash[key]);
+  }
+  return result;
+};
+
+const arrNew = uniqueObject(arrObject, 'id');
+console.log(arrNew)

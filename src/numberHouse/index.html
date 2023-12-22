@@ -6,7 +6,27 @@
     <title>Document</title>
   </head>
   <body>
-    <button id="btn">点我</button>
+    <!-- <button id="btn">点我</button> -->
+    <style>
+      .container {
+        overflow: hidden;
+      }
+      .left {
+        width: 200px;
+        height: 200px;
+        float: left;
+        background: red;
+      }
+      .right {
+        margin-left: 200px; /* 使用外边距将右侧元素推到右边 */
+        height: 200px;
+        background: pink;
+      }
+    </style>
+    <div class="container">
+      <div class="left">11</div>
+      <div class="right">22</div>
+    </div>
 
     <script src="./index.js"></script>
   </body>

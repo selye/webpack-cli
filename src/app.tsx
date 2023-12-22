@@ -26,6 +26,8 @@ import { LazyLoad } from './components/Lazyload';
 import { GridComponent } from './components/GridComponent';
 import Picture from './views/reactRe';
 import useCount from './utils/count';
+import Matching from './views/matching';
+import Weather from './weather';
 
 interface IPprops {
   name: string;
@@ -88,7 +90,7 @@ const App: FC<IPprops> = (props) => {
     >
       <Provider store={store}>
         <div className="app">
-          <div>现在的数字是：{count}</div>
+          {/* <div>现在的数字是：{count}</div> */}
           {/* <Header /> */}
           {/* <img src={myImg} /> */}
           {/* <p>{`Hello! I'm ${name}, ${age} years old.`}</p> */}
@@ -117,21 +119,23 @@ const App: FC<IPprops> = (props) => {
           <h4>状态管理</h4>
           <MyComponents />
           <EffectRooms /> */}
-            <ChatRoom />
+            {/* <ChatRoom />
             <MouseFollow />
             <Animationeffect />
-            <MgDialog />
+            <MgDialog /> */}
             {/* <SectionList /> */}
             <hr />
-            <MyForm />
-            <MgReducer />
+            {/* <MyForm /> */}
+            {/* <MgReducer /> */}
             <hr />
-            <Vdom />
+            {/* <Vdom /> */}
             <hr />
             {/* <LazyLoad /> */}
             <hr />
             {/* <GridComponent /> */}
-            <Picture />
+            {/* <Picture /> */}
+            {/* <Matching /> */}
+            <Weather />
           </Suspense>
         </div>
       </Provider>

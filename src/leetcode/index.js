@@ -97,8 +97,23 @@ var isPalindrome = function (x) {
   return true;
 };
 
-console.log(isPalindrome(10));
+// console.log(isPalindrome(10));
 
 // 链表的本质：处理链表节点之间的指针关系
+
+// 洗牌算法
+
+const sortArr = [1,2,3,4,5,6]
+function cashArr(arr){
+  for(i = 0; i < arr.length; i++){
+    const rand = parseInt(Math.random() * i)  + 1;
+    let tmp = arr[i];   // 1
+    arr[i] = arr[rand]; // 2
+    arr[rand] = tmp
+  }
+  return arr
+}
+
+console.log(cashArr(sortArr))
 
 

@@ -26,3 +26,5 @@ console.log(currySum(1)(2)(3));
 
 
 
+
+
