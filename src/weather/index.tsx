@@ -39,6 +39,7 @@ const Weather = () => {
       console.error('Error fetching weather:', error.message);
     }
   };
+  console.log("测试")
 
   const getWeather = debunceFn((e: any) => {
     setInputValue(e.target.value);
