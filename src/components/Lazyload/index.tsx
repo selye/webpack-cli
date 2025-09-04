@@ -11,7 +11,6 @@ interface LazyimgProp {
 }
 const LazyImg: React.FC<LazyimgProp> = ({ src, alt = '加载中..', dataSrc }) => {
   const imgRef = useRef<HTMLImageElement>(null);
-
   useEffect(() => {
     if (imgRef.current) {
       const observer = new IntersectionObserver(

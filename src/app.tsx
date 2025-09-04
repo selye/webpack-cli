@@ -124,18 +124,14 @@ const App: FC<IPprops> = (props) => {
             <Animationeffect />
             <MgDialog /> */}
             {/* <SectionList /> */}
-            <hr />
             {/* <MyForm /> */}
-            {/* <MgReducer /> */}
-            <hr />
+             <MgReducer />
             {/* <Vdom /> */}
-            <hr />
             {/* <LazyLoad /> */}
-            <hr />
             {/* <GridComponent /> */}
-            {/* <Picture /> */}
-            {/* <Matching /> */}
-            <Weather />
+            {/* <Picture />*/}
+            {/* <Matching />*/}
+            {/*<Weather />*/}
           </Suspense>
         </div>
       </Provider>

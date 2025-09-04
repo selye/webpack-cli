@@ -103,17 +103,114 @@ var isPalindrome = function (x) {
 
 // 洗牌算法
 
-const sortArr = [1,2,3,4,5,6]
-function cashArr(arr){
-  for(i = 0; i < arr.length; i++){
-    const rand = parseInt(Math.random() * i)  + 1;
-    let tmp = arr[i];   // 1
+const sortArr = [1, 2, 3, 4, 5, 6];
+function cashArr(arr) {
+  for (i = 0; i < arr.length; i++) {
+    const rand = parseInt(Math.random() * i) + 1;
+    let tmp = arr[i]; // 1
     arr[i] = arr[rand]; // 2
-    arr[rand] = tmp
+    arr[rand] = tmp;
   }
-  return arr
+  return arr;
 }
 
-console.log(cashArr(sortArr))
+// console.log(cashArr(sortArr))
 
+// 示例数据
+const items = [
+  { id: 1, name: 'Item 1' },
+  { id: 2, name: 'Item 2' },
+  { id: 1, name: 'Item 1 updated' },
+  { id: 3, name: 'Item 3' },
+];
 
+const qcFn = (list) => {
+  const map = new Map();
+  for (const item of list) {
+    map.set(item.id, item);
+  }
+  return map.values();
+};
+
+// console.log(qcFn(items));
+
+// class Example {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   init() {
+//     const fun = () => {
+//       console.log(this.name);
+//     };
+//     fun();
+//   }
+// }
+// const e = new Example('Hello');
+// e.init();
+
+function Example(name) {
+  this.name = name;
+  this.init = () => {
+    const fn = () => {
+      console.log(this.name);
+    };
+    fn();
+  };
+}
+
+// const e = new Example('world');
+// e.init();
+
+// 数组去重的方法
+const testArray = [1, 1, 2, 4, 2, 4, 3, 5, 6, 6, 7];
+
+// forEach
+function heavyList(list) {
+  const result = [];
+  list.forEach((listItem) => {
+    if (!result.includes(listItem)) {
+      result.push(listItem);
+    }
+  });
+  return result;
+}
+
+// Set
+function listSet(list) {
+  const result = new Set(list);
+  return Array.from(result);
+}
+
+//reduce
+
+function listReduce(list) {
+  const result = list.reduce((pre, cur) => {
+    if (!pre.includes(cur)) {
+      pre.push(cur);
+    }
+    return pre;
+  }, []);
+  return result;
+}
+// console.log(listReduce(testArray));
+
+//执行结果
+// foo(typeof a);
+// function foo(p) {
+//   console.log(this);
+//   console.log(p);
+//   console.log(typeof b);
+//   let b = 0;
+// }
+
+const person = {
+  name: 'shjie',
+  age: 22,
+};
+
+const keys = ['name', 'height'];
+keys.forEach((key) => {
+  if (key in person) {
+    console.log(key);
+  }
+});

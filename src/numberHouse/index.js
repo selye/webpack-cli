@@ -253,3 +253,6 @@ let uniqueObject = (arr, key) => {
 
 const arrNew = uniqueObject(arrObject, 'id');
 console.log(arrNew)
+
+
+filterFeilds
