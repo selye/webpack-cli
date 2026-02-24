@@ -28,6 +28,7 @@ import Picture from './views/reactRe';
 import useCount from './utils/count';
 import Matching from './views/matching';
 import Weather from './weather';
+import HandEdit from './views/handEdit';
 
 interface IPprops {
   name: string;
@@ -132,6 +133,7 @@ const App: FC<IPprops> = (props) => {
             {/* <Picture />*/}
             {/* <Matching />*/}
             {/*<Weather />*/}
+            <HandEdit/>
           </Suspense>
         </div>
       </Provider>
