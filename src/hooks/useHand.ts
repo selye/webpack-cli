@@ -10,7 +10,6 @@ const useHandEdit = () => {
         let timer: ReturnType<typeof setTimeout> | null = null; // 定时器
         return function (...args: any[]) {
             if (timer) {
-                console.log('清空定时1')
                 clearTimeout(timer)
             }
             // 立即执行
@@ -29,8 +28,45 @@ const useHandEdit = () => {
         }
     }
 
+    /**
+     * @description 节流函数-定时器版本 在多次操作中按照固有间隔执行
+     * @params fn 函数
+     * @params delay 函数执行间隔
+     */
+
+    const throttleFn = (fn: Function, delay: number = 1000) => {
+        let timer: ReturnType<typeof setTimeout> | null = null; // 定时器
+        return function (...args: any[]) {
+            if (!timer) {
+                timer = setTimeout(() => {
+                    fn(...args)
+                    timer = null
+                }, delay);
+            }
+        }
+    }
+
+
+    /**
+     * @description 节流函数 时间戳版本
+     * @params fn 函数
+     * @params delay 函数执行间隔
+     */
+    const throttleTimeFn = (fn: Function, delay: number = 1000) => {
+        let lasTime = 0;
+        return function(...args: any[]){
+            const now = new Date().getTime(); // 获取时间戳
+            if(now - lasTime > delay){
+                fn(...args)
+                lasTime = now
+            }
+        }
+    }
+
     return {
-        debounceFn
+        debounceFn,
+        throttleFn,
+        throttleTimeFn
     }
 }
 

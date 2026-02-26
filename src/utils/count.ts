@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 */
 
 function useCount() {
-  const [count, setCount] = useState<number>(10);
+  const [count, setCount] = useState<number>(0);
   const timerId = useRef<NodeJS.Timeout>();
 
   function init() {
